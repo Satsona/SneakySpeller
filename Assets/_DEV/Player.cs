@@ -5,8 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float rotationSpeed = 200f;
+    public float moveSpeed = 4f;
+    public float rotationSpeed = 100f;
 
     private Rigidbody rb;
     private float moveInput;
