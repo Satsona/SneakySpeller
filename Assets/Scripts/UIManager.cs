@@ -8,8 +8,8 @@ public class UIManager : MonoBehaviour
 {
   public void StartButton()
     {
-        Debug.Log("Starting Level 1");
-        SceneManager.LoadScene("Level 1");
+        Debug.Log("Loading Next Level");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void QuitButton()

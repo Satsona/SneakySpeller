@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance; // Singleton instance
 
-    public string hiddenWord = "HELLO";
+    public string correctWord = "EXAMPLE";
+    public string collectedWord = "PLEMAXE"; // this will be updated in level 1
     public TextMeshProUGUI[] letterSlots; // Assign in Inspector
 
     private HashSet<int> revealedIndices = new HashSet<int>();
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject); // Keeps it between scenes
         }
         else
         {
@@ -46,9 +48,9 @@ public class GameManager : MonoBehaviour
     {
         collected = char.ToUpper(collected);
 
-        for (int i = 0; i < hiddenWord.Length; i++)
+        for (int i = 0; i < collectedWord.Length; i++)
         {
-            if (hiddenWord[i] == collected && !revealedIndices.Contains(i))
+            if (collectedWord[i] == collected && !revealedIndices.Contains(i))
             {
                 letterSlots[i].text = collected.ToString();
                 revealedIndices.Add(i);
@@ -56,7 +58,7 @@ public class GameManager : MonoBehaviour
             }
         }
         //  Check if all letters are revealed
-        if (revealedIndices.Count == hiddenWord.Length)
+        if (revealedIndices.Count == collectedWord.Length)
         {
             LoadNextScene();
         }
