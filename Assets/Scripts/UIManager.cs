@@ -17,4 +17,8 @@ public class UIManager : MonoBehaviour
         Debug.Log("Closing the game");
         Application.Quit();
     }
+    public void GoMenuScene()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
 }

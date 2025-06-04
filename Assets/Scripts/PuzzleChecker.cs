@@ -5,7 +5,6 @@ public class PuzzleChecker : MonoBehaviour
 {
     public Transform slotContainer;
     public string correctWord = "EXAMPLE";
-    public string nextSceneName; //  Set this in Inspector
 
     public void CheckWord()
     {
@@ -36,7 +35,7 @@ public class PuzzleChecker : MonoBehaviour
         if (currentWord == correctWord)
         {
             Debug.Log("Correct! Loading next scene...");
-            SceneManager.LoadScene(nextSceneName); // Scene name must be added to Build Settings
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
         }
         else
         {
@@ -46,6 +45,7 @@ public class PuzzleChecker : MonoBehaviour
 
     private bool AllSlotsFilled()
     {
+
         for (int i = 0; i < slotContainer.childCount; i++)
         {
             if (slotContainer.GetChild(i).childCount == 0)
